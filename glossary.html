@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Glossary - Unsafe Code Guidelines Reference</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="glossary.html" class="active">Glossary</a></li><li><a href="layout.html"><strong aria-hidden="true">1.</strong> Data layout</a></li><li><ol class="section"><li><a href="layout/structs-and-tuples.html"><strong aria-hidden="true">1.1.</strong> Structs and tuples</a></li><li><a href="layout/scalars.html"><strong aria-hidden="true">1.2.</strong> Scalars</a></li><li><a href="layout/enums.html"><strong aria-hidden="true">1.3.</strong> Enums</a></li><li><a href="layout/unions.html"><strong aria-hidden="true">1.4.</strong> Unions</a></li><li><a href="layout/pointers.html"><strong aria-hidden="true">1.5.</strong> Pointers</a></li><li><a href="layout/function-pointers.html"><strong aria-hidden="true">1.6.</strong> Function pointers</a></li><li><a href="layout/arrays-and-slices.html"><strong aria-hidden="true">1.7.</strong> Arrays and Slices</a></li><li><a href="layout/packed-simd-vectors.html"><strong aria-hidden="true">1.8.</strong> Packed SIMD vectors</a></li></ol></li><li><a href="optimizations.html"><strong aria-hidden="true">2.</strong> Optimizations</a></li><li><ol class="section"><li><a href="optimizations/return_value_optimization.html"><strong aria-hidden="true">2.1.</strong> Return value optimization</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Unsafe Code Guidelines Reference</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#glossary" id="glossary"><h2>Glossary</h2></a>
+<a class="header" href="#interior-mutability" id="interior-mutability"><h4>Interior mutability</h4></a>
+<p><em>Interior Mutation</em> means mutating memory where there also exists a live shared reference pointing to the same memory; or mutating memory through a pointer derived from a shared reference.
+&quot;live&quot; here means a value that will be &quot;used again&quot; later.
+&quot;derived from&quot; means that the pointer was obtained by casting a shared reference and potentially adding an offset.
+This is not yet precisely defined, which will be fixed as part of developing a precise aliasing model.</p>
+<p>Finding live shared references propagates recursively through references, but not through raw pointers.
+So, for example, if data immediately pointed to by a <code>&amp;T</code> or <code>&amp; &amp;mut T</code> is mutated, that's interior mutability.
+If data immediately pointed to by a <code>*const T</code> or <code>&amp;*const T</code> is mutated, that's <em>not</em> interior mutability.</p>
+<p><em>Interior mutability</em> refers to the ability to perform interior mutation without causing UB.
+All interior mutation in Rust has to happen inside an <a href="https://doc.rust-lang.org/core/cell/struct.UnsafeCell.html"><code>UnsafeCell</code></a>, so all data structures that have interior mutability must (directly or indirectly) use <code>UnsafeCell</code> for this purpose.</p>
+<a class="header" href="#validity-and-safety-invariant" id="validity-and-safety-invariant"><h4>Validity and safety invariant</h4></a>
+<p>The <em>validity invariant</em> is an invariant that all data must uphold any time it is accessed or copied in a typed manner.
+This invariant is known to the compiler and exploited by optimizations such as improved enum layout or eliding in-bounds checks.</p>
+<p>In terms of MIR statements, &quot;accessed or copied&quot; means whenever an assignment statement is executed.
+That statement has a type (LHS and RHS must have the same type), and the data being assigned must be valid at that type.
+Moreover, arguments passed to a function must be valid at the type given in the callee signature, and the return value of a function must be valid at the type given in the caller signature.
+OPEN QUESTION: Are there more cases where data must be valid?</p>
+<p>In terms of code, some data computed by <code>TERM</code> is valid at type <code>T</code> if and only if the following program does not have UB:</p>
+<pre><code class="language-rust ignore">fn main() { unsafe {
+  let t: T = std::mem::transmute(TERM);
+} }
+</code></pre>
+<p>The <em>safety</em> invariant is an invariant that safe code may assume all data to uphold.
+This invariant is used to justify which operations safe code can perform.
+The safety invariant can be temporarily violated by unsafe code, but must always be upheld when interfacing with unknown safe code.
+It is not relevant when arguing whether some <em>program</em> has UB, but it is relevant when arguing whether some code safely encapsulates its unsafety -- IOW, it is relevant when arguing whether some <em>library</em> can be used by safe code to <em>cause</em> UB.</p>
+<p>In terms of code, some data computed by <code>TERM</code> (possibly constructed from some <code>arguments</code> that can be <em>assumed</em> to satisfy the safety invariant) is valid at type <code>T</code> if and only if the following library function can be safely exposed to arbitrary (safe) code as part of the public library interface:</p>
+<pre><code class="language-rust ignore">pub fn make_something(arguments: U) -&gt; T { unsafe {
+  std::mem::transmute(TERM)
+} }
+</code></pre>
+<p>One example of valid-but-unsafe data is a <code>&amp;str</code> or <code>String</code> that's not well-formed UTF-8: the compiler will not run its own optimizations that would cause any trouble here, so unsafe code may temporarily violate the invariant that strings are <code>UTF-8</code>.
+However, functions on <code>&amp;str</code>/<code>String</code> may assume the string to be <code>UTF-8</code>, meaning they may cause UB if the string is <em>not</em> <code>UTF-8</code>.
+This means that unsafe code violating the UTF-8 invariant must not perform string operations (it may operate on the data as a byte slice though), or else it risks UB.
+Moreover, such unsafe code must not return a non-UTF-8 string to the &quot;outside&quot; of its safe abstraction boundary, because that would mean safe code could cause UB by doing <code>bad_function().chars().count()</code>.</p>
+<p>To summarize: <em>Data must always be valid, but it only must be safe in safe code.</em>
+For some more information, see <a href="https://www.ralfj.de/blog/2018/08/22/two-kinds-of-invariants.html">this blog post</a>.</p>
+<a class="header" href="#layout" id="layout"><h4>Layout</h4></a>
+<p>The <em>layout</em> of a type defines its size and alignment as well as the offsets of its subobjects (e.g. fields of structs/unions/enum/... or elements of arrays).
+Moreover, the layout of a type records its <em>function call ABI</em> (or just <em>ABI</em> for short): how the type is passed <em>by value</em> across a function boundary.</p>
+<p>Note: Originally, <em>layout</em> and <em>representation</em> were treated as synonyms, and Rust language features like the <code>#[repr]</code> attribute reflect this.
+In this document, <em>layout</em> and <em>representation</em> are not synonyms.</p>
+<a class="header" href="#todo" id="todo"><h3>TODO</h3></a>
+<ul>
+<li><em>niche</em></li>
+<li><em>tag</em></li>
+<li><em>rvalue</em></li>
+<li><em>lvalue</em></li>
+<li><em>representation</em></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+                            <a rel="next" href="layout.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+                    <a href="layout.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
